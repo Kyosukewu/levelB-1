@@ -140,3 +140,4 @@ $News=new DB("news");
 $Admin=new DB("admin");
 $Menu=new DB("menu");
 $Total=new DB("total");
+

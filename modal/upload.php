@@ -1,12 +1,12 @@
 <?php
 include_once "../base.php";
 ?>
-<h3><?=$uploadimg[$_GET['table'][0]];?></h3>
+<h3><?=$uploadimg[$_GET['table']][0];?></h3>
 <hr>
 <form action="./api/upload.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td><?=$uploadimg[$_GET['table'][1]];?></td>
+            <td><?=$uploadimg[$_GET['table']][1];?></td>
             <td><input type="file" name="img" id=""></td>
         </tr>
         <tr>

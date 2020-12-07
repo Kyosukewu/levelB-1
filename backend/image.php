@@ -19,13 +19,13 @@
                             <img src="./img/<?= $row['img']; ?>" style="width:100px;height:68px;">
                         </td>
                         <td width="10%">
-                            <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1 ? "checked" : "") ?>>
+                            <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1 )? "checked" : ""; ?>>
                         </td>
                         <td width="10%">
                             <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                         <td>
-                            <input type="button" value="更換圖片" onclick="op('#cover','#cvr','./modal/upload<?= $do; ?>.php?table=<?= $do; ?>&id=<?= $row['id'] ?>')">
+                            <input type="button" value="更換圖片" onclick="op('#cover','#cvr','./modal/upload.php?table=<?= $do; ?>&id=<?= $row['id']; ?>')">
                         </td>
                         <input type="hidden" name="id[]" value="<?= $row['id'] ?>">
                     </tr>
