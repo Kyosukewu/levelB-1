@@ -148,3 +148,11 @@ $News = new DB("news");
 $Admin = new DB("admin");
 $Menu = new DB("menu");
 $Total = new DB("total");
+
+$title=$Title->find(['sh'=>1]);
+if(empty($_SESSION['visited'])){
+    $total['total']++;
+    $Total->save($total);
+    $total=$Total->find(1);
+    $_SESSION=$total['total'];
+}
