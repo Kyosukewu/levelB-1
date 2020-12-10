@@ -1,19 +1,14 @@
-
-<h3>新增管理者帳號</h3>
+<h3 class="cent">新增主選單</h3>
 <hr>
 <form action="api/add.php" method="post" enctype="multipart/form-data">
     <table style="width:70%;margin:auto">
         <tr>
-            <td style="text-align:right">帳號：</td>
-            <td><input type="text" name="acc"></td>
+            <td style="text-align:right">主選單名稱：</td>
+            <td><input type="text" name="text"></td>
         </tr>
         <tr>
-            <td style="text-align:right">密碼：</td>
-            <td><input type="password" name="pw"></td>
-        </tr>
-        <tr>
-            <td style="text-align:right">確認密碼：</td>
-            <td><input type="password" name="pwc"></td>
+            <td style="text-align:right">選單連結網址：</td>
+            <td><input type="text" name="href"></td>
         </tr>
     </table>
     <div style="width:100px;margin:auto">

@@ -19,7 +19,7 @@ foreach ($_POST['id'] as $key => $id) {
                 $data['pw'] = $_POST['pw'][$key];
                 break;
             case "menu":
-                $data['name'] = $_POST['name'][$key];
+                $data['text'] = $_POST['text'][$key];
                 $data['href'] = $_POST['href'][$key];
                 $data['sh'] = (in_array($id, $_POST['sh'])) ? 1 : 0;
                 break;

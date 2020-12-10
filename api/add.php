@@ -20,7 +20,7 @@ switch ($table){
         $data['pw']=$_POST['pw'];
     break;
     case "menu":
-        $data['name']=$_POST['name'];
+        $data['text']=$_POST['text'];
         $data['href']=$_POST['href'];
         $data['sh']=1;
     break;
