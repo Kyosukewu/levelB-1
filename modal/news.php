@@ -3,11 +3,11 @@ include_once "../base.php";
 ?>
 <h3><?=$addstr[$_GET['table']];?></h3>
 <hr>
-<form action="./api/edit.php" method="post" enctype="multipart/form-data">
+<form action="./api/add.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td><?=$uploadimg[$_GET['table']][1];?></td>
-            <td><input type="file" name="img" id=""></td>
+            <td>新增最新消息資料</td>
+            <td><textarea  name="text" rows="1" cols="50"></textarea></td>
         </tr>
         <tr>
             <td colspan="2">
