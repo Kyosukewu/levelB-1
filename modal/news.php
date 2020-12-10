@@ -6,8 +6,8 @@ include_once "../base.php";
 <form action="./api/add.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td>新增最新消息資料</td>
-            <td><textarea  name="text" rows="1" cols="50"></textarea></td>
+            <td style="vertical-align: top;">新增最新消息資料</td>
+            <td><textarea  name="text" style="width:300px;height:200px;"></textarea></td>
         </tr>
         <tr>
             <td colspan="2">
