@@ -16,16 +16,16 @@
                 foreach ($rows as $row) {
                 ?>
                     <tr class="yel">
-                        <td width="45%">
+                        <td>
                             <img src="./img/<?=$row['img'];?>" style="width:300px;height:30px;">
                         </td>
-                        <td width="23%">
+                        <td>
                             <input type="text" name="text[]" value="<?=$row['text'];?>">
                         </td>
-                        <td width="7%">
+                        <td>
                             <input type="radio" name="sh" value="<?=$row['id'];?>" <?=($row['sh']==1?"checked":"")?>>
                         </td>
-                        <td width="7%">
+                        <td>
                         <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                         </td>
                         <td>
