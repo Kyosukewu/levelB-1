@@ -57,7 +57,7 @@ include_once "base.php";
 						<?php
 						foreach($Image->all(['sh'=>1]) as $key=>$img){
 						?>
-						<div class="im" id="ssaa<?=$key;?>"><img src="img/<?=$img['img']?>" style="width:150px;height:103px;margin:5px;"></div>
+						<div class="im" id="ssaa<?=$key;?>"><img src="img/<?=$img['img']?>" style="width:150px;height:103px;margin:3px; border:3px solid orange;"></div>
 						<?php
 						}
 						?>
@@ -70,7 +70,7 @@ include_once "base.php";
 							if (x == 1 && nowpage - 1 >= 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							if (x == 2 && (nowpage + 1) <= num - 3) {
 								nowpage++;
 							}
 							$(".im").hide() // .im =>class=im
