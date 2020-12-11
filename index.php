@@ -51,12 +51,20 @@ include_once "base.php";
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
-				<div style="width:89%; height:480px;" class="dbor">
-					<span class="t botli">校園映象區</span>
+				<div style="width:89%; height:480px; text-align:center; overflow:hidden" class="dbor">
+					<span class="t botli" style="margin-bottom: .5rem;">校園映象區</span>
+						<div id="up" onclick="pp(1)"><img src="icon/up.jpg"></div>
+						<?php
+						foreach($Image->all(['sh'=>1]) as $key=>$img){
+						?>
+						<div class="im" id="ssaa<?=$key;?>"><img src="img/<?=$img['img']?>" style="width:150px;height:103px;margin:5px;"></div>
+						<?php
+						}
+						?>
+						<div id="down" onclick="pp(2)" style="margin-bottom: .5rem;"><img src="icon/dn.jpg"></div>
 					<script>
 						var nowpage = 0,
-							num = 0;
-
+							num = <?=$Image->count(['sh'=>1]);?>; //圖片數量
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
@@ -65,7 +73,7 @@ include_once "base.php";
 							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
 								nowpage++;
 							}
-							$(".im").hide()
+							$(".im").hide() // .im =>class=im
 							for (s = 0; s <= 2; s++) {
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()

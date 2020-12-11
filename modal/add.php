@@ -3,7 +3,7 @@ include_once "../base.php";
 ?>
 <h3><?=$addstr[$_GET['table']];?></h3>
 <hr>
-<form action="./api/edit.php" method="post" enctype="multipart/form-data">
+<form action="./api/add.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td><?=$uploadimg[$_GET['table']][1];?></td>
