@@ -9,7 +9,14 @@
                     <td width="10%">刪除</td>
                 </tr>
                 <?php
-                $rows = $News->all();
+                $all = $Image->count();
+                $div = 5;
+                $pages = ceil($all / $div);
+                $now = (isset($_GET['p'])) ? $_GET['p'] : 1;
+                // $now=(isset($_GET['p']))??1;  //短寫法
+                $start = ($now - 1) * $div;
+
+                $rows = $News->all("limit $start,$div");
 
                 foreach ($rows as $row) {
                 ?>
@@ -28,6 +35,32 @@
                 <?php
                 }
                 ?>
+                <tr>
+                    <td  colspan="4" style="text-align: center;">
+                        <?php
+                        if (($now - 1) > 0) {
+                        ?>
+                            <a class="bl" style="font-size:30px;" href="?do=news&p=<?= $now - 1; ?>">&lt;&nbsp;</a>
+                        <?php
+                        }
+                        for ($i = 1; $i <= $pages; $i++) {
+                            if ($i == $now) {
+                                $font = "3.5rem";
+                            } else {
+                                $font = "30px";
+                            }
+                            echo "<a style='font-size:$font;' href='?do=news&p=$i'> ";
+                            echo $i;
+                            echo " </a>";
+                        }
+                        if (($now + 1) <= $pages) {
+                        ?>
+                            <a class="bl" style="font-size:30px;" href="?do=news&p=<?= $now + 1; ?>">&nbsp;&gt;</a>
+                        <?php
+                        }
+                        ?>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table style="margin-top:40px; width:70%;">
