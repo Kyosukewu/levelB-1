@@ -31,6 +31,16 @@ include_once "base.php";
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+						$mainmu=$Menu->all(['sh'=>1,'parent'=>0]);
+						foreach($mainmu as $main){
+					?>
+					<a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$main['href']?>">
+						<div class="mainmu"><?=$main['text']?></div>
+					</a>
+					<?php
+					}
+					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :<?=$Total->find(1)['total'];?></span>
