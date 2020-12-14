@@ -22,8 +22,9 @@ include_once "base.php";
 		</div>
 	</div>
 	<div id="main">
-	<a title="<?=$Title->find(['sh'=>1])['text'];?>" href="index.php"><!-- 回到首頁 -->
-			<div class="ti" style="background:url('img/<?=$Title->find(['sh'=>1])['img'];?>'); background-size:cover;"></div>
+		<a title="<?= $Title->find(['sh' => 1])['text']; ?>" href="index.php">
+			<!-- 回到首頁 -->
+			<div class="ti" style="background:url('img/<?= $Title->find(['sh' => 1])['img']; ?>'); background-size:cover;"></div>
 			<!--標題-->
 		</a>
 		<div id="ms">
@@ -32,29 +33,43 @@ include_once "base.php";
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
 					<?php
-						$mainmu=$Menu->all(['sh'=>1,'parent'=>0]);
-						foreach($mainmu as $main){
+					$mainmu = $Menu->all(['sh' => 1, 'parent' => 0]);
+					foreach ($mainmu as $main) {
 					?>
-					<a style="color:#000; font-size:13px; text-decoration:none;" href="<?=$main['href']?>">
-						<div class="mainmu"><?=$main['text']?></div>
-					</a>
+						<div class="mainmu" style="position: relative;">
+							<a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $main['href'] ?>"><?= $main['text'] ?></a>
+							<div class="mw" style="display:none;position: absolute;bottom:-50%;right:0%;">
+								<?php
+								if ($Menu->count(['parent' => $main['id']]) > 0) {
+									$subs = $Menu->all(['parent' => $main['id']]);
+									foreach ($subs as $sub) {
+								?>
+										<a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $sub['href'] ?>">
+											<div class="mainmu2"><?= $sub['text'] ?></div>
+										</a>
+								<?php
+									}
+								}
+								?>
+							</div>
+						</div>
 					<?php
 					}
 					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-					<span class="t">進站總人數 :<?=$Total->find(1)['total'];?></span>
+					<span class="t">進站總人數 :<?= $Total->find(1)['total']; ?></span>
 				</div>
 			</div>
 			<?php
 
-				$do=(isset($_GET['do']))?$_GET['do']:'main';
-				$file=$do.".php";
-				if(file_exists($file)){
-					include $file;
-				}else{
-					include "main.php";
-				}
+			$do = (isset($_GET['do'])) ? $_GET['do'] : 'main';
+			$file = $do . ".php";
+			if (file_exists($file)) {
+				include $file;
+			} else {
+				include "main.php";
+			}
 
 
 			?>
@@ -63,18 +78,18 @@ include_once "base.php";
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px; text-align:center; overflow:hidden" class="dbor">
 					<span class="t botli" style="margin-bottom: .5rem;">校園映象區</span>
-						<div id="up" onclick="pp(1)"><img src="icon/up.jpg"></div>
-						<?php
-						foreach($Image->all(['sh'=>1]) as $key=>$img){
-						?>
-						<div class="im" id="ssaa<?=$key;?>"><img src="img/<?=$img['img']?>" style="width:150px;height:103px;margin:3px; border:3px solid orange;"></div>
-						<?php
-						}
-						?>
-						<div id="down" onclick="pp(2)" style="margin-bottom: .5rem;"><img src="icon/dn.jpg"></div>
+					<div id="up" onclick="pp(1)"><img src="icon/up.jpg"></div>
+					<?php
+					foreach ($Image->all(['sh' => 1]) as $key => $img) {
+					?>
+						<div class="im" id="ssaa<?= $key; ?>"><img src="img/<?= $img['img'] ?>" style="width:150px;height:103px;margin:3px; border:3px solid orange;"></div>
+					<?php
+					}
+					?>
+					<div id="down" onclick="pp(2)" style="margin-bottom: .5rem;"><img src="icon/dn.jpg"></div>
 					<script>
 						var nowpage = 0,
-							num = <?=$Image->count(['sh'=>1]);?>; //圖片數量
+							num = <?= $Image->count(['sh' => 1]); ?>; //圖片數量
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
@@ -96,7 +111,7 @@ include_once "base.php";
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"><?=$Bottom->find(1)['bottom'];?></span>
+			<span class="t" style="line-height:123px;"><?= $Bottom->find(1)['bottom']; ?></span>
 		</div>
 	</div>
 
