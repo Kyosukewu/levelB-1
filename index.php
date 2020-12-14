@@ -38,7 +38,7 @@ include_once "base.php";
 					?>
 						<div class="mainmu" style="position: relative;">
 							<a style="color:#000; font-size:13px; text-decoration:none;" href="<?= $main['href'] ?>"><?= $main['text'] ?></a>
-							<div class="mw" style="display:none;position: absolute;bottom:-50%;right:0%;">
+							<div class="mw" style="display:none;position: absolute;top:50%;right:0%;z-index:5;">
 								<?php
 								if ($Menu->count(['parent' => $main['id']]) > 0) {
 									$subs = $Menu->all(['parent' => $main['id']]);
@@ -58,7 +58,7 @@ include_once "base.php";
 					?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-					<span class="t">進站總人數 :<?= $Total->find(1)['total']; ?></span>
+					<span class="t">進站總人數 :<?= $_SESSION['total']; ?></span>
 				</div>
 			</div>
 			<?php
@@ -75,7 +75,18 @@ include_once "base.php";
 			?>
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
+
+				<?php
+					if(isset($_SESSION['login'])){
+				?>
+				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('backend.php')">返回管理</button>
+				<?php
+					}else{
+				?>
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo('?do=login')">管理登入</button>
+				<?php
+				}
+				?>
 				<div style="width:89%; height:480px; text-align:center; overflow:hidden" class="dbor">
 					<span class="t botli" style="margin-bottom: .5rem;">校園映象區</span>
 					<div id="up" onclick="pp(1)"><img src="icon/up.jpg"></div>

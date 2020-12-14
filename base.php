@@ -124,6 +124,7 @@ class DB
         } else { //insert
             $sql = "insert into $this->table (`" . implode("`,`", array_keys($arg)) . "`) values('" . implode("','", $arg) . "')";
         }
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -147,3 +148,10 @@ $News = new DB("news");
 $Admin = new DB("admin");
 $Menu = new DB("menu");
 $Total = new DB("total");
+
+if(empty($_SESSION['total'])){
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['total']=$total['total'];
+}

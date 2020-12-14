@@ -3,6 +3,8 @@ include_once "../base.php";
 
 $acc=$_POST['acc'];
 $pw=$_POST['pw'];
+$_SESSION['login']=$acc;
+
 
 $check=$Admin->count(['acc'=>$acc,'pw'=>$pw]);
 
