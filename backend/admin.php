@@ -12,6 +12,7 @@
                 $rows = $Admin->all();
 
                 foreach ($rows as $row) {
+                    if($row['acc']!='admin'){//隱藏主帳號admin
                 ?>
                     <tr class="yel">
                         <td>
@@ -27,6 +28,7 @@
                         <input type="hidden" name="id[]" value="<?=$row['id']?>">
                     </tr>
                 <?php
+                }
                 }
                 ?>
             </tbody>
