@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-12-10 09:10:05
+-- 產生時間： 2021-01-04 07:43:09
 -- 伺服器版本： 10.4.14-MariaDB
 -- PHP 版本： 7.4.10
 
@@ -62,7 +62,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `acc`, `pw`) VALUES
-(1, 'admin', '1234');
+(1, 'admin', '1234'),
+(3, 'peter', '1234');
 
 -- --------------------------------------------------------
 
@@ -101,13 +102,13 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`id`, `text`, `img`, `sh`) VALUES
 (1, '', '01D10.jpg', 1),
-(2, '', '01D04.jpg', 0),
-(4, '', '01D08.jpg', 1),
-(5, '', '01D06.jpg', 0),
+(2, '', '01D04.jpg', 1),
+(4, '', '01D07.jpg', 1),
+(5, '', '01D06.jpg', 1),
 (6, '', '01D04.jpg', 1),
-(7, '', '01D01.jpg', 1),
-(8, '', '01D05.jpg', 1),
-(9, '', '01D04.jpg', 1);
+(10, '', '01D02.jpg', 1),
+(11, '', '01D09.jpg', 1),
+(12, '', '01D05.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,9 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id`, `text`, `href`, `parent`, `sh`) VALUES
 (1, '管理登入', '?do=login', 0, 1),
 (2, '網站首頁', 'index.php', 0, 1),
-(4, 'test', '1234', 0, 0);
+(10, '更多消息資料', '?do=news', 2, 1),
+(14, 'asas', 'asdasd', 0, 1),
+(15, 'thrth', 'hrthr', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -153,7 +156,7 @@ INSERT INTO `mvim` (`id`, `text`, `img`, `sh`) VALUES
 (1, '', '01C01.gif', 1),
 (3, '', '01C03.gif', 1),
 (4, '', '01C04.gif', 1),
-(5, '', '01C05.gif', 1);
+(5, '', '01C05.gif', 0);
 
 -- --------------------------------------------------------
 
@@ -180,7 +183,11 @@ INSERT INTO `news` (`id`, `text`, `img`, `sh`) VALUES
 (5, '11月23日(星期五)將於彰化縣田尾鄉菁芳園休閒農場\r\n舉辦「高中職生涯輔導知能研習」\r\n中區學校每校至多2名\r\n以普通科、專業類科教師優先報名參加\r\n生涯規劃教師次之，參加人員公差假\r\n並核實派代課\r\n當天還有專車接送(8:35前在員林火車站集合)\r\n如此好康的機會，怎能錯過？！\r\n熱烈邀請師長們向輔導室(分機234)報名\r\n名額有限，動作要快！！\r\n報名截止日期：本周四 10月25日17:00前！', '', 1),
 (6, '台視百萬大明星節目辦理海選活動\r\n時間:101年10月27日下午13時\r\n地點:彰化', '', 1),
 (7, '國立故宮博物院辦理\r\n「商王武丁與后婦好 殷商盛世文化藝術特展」暨\r\n「赫赫宗周 西周文化特展」', '', 1),
-(8, '財團法人漢光教育基金會\r\n辦理2012「舊愛新歡-古典詩詞譜曲創作暨歌唱表演競賽」\r\n參賽獎金豐厚!!', '', 1);
+(8, '財團法人漢光教育基金會\r\n辦理2012「舊愛新歡-古典詩詞譜曲創作暨歌唱表演競賽」\r\n參賽獎金豐厚!!', '', 1),
+(9, '財團法人漢光教育基金會\r\n辦理2012「舊愛新歡-古典詩詞譜曲創作暨歌唱表演競賽」\r\n參賽獎金豐厚!!', NULL, 1),
+(10, '財團法人漢光教育基金會\r\n辦理2012「舊愛新歡-古典詩詞譜曲創作暨歌唱表演競賽」\r\n參賽獎金豐厚!!', NULL, 1),
+(11, '財團法人漢光教育基金會\r\n辦理2012「舊愛新歡-古典詩詞譜曲創作暨歌唱表演競賽」\r\n參賽獎金豐厚!!', NULL, 1),
+(12, '財團法人漢光教育基金會\r\n辦理2012「舊愛新歡-古典詩詞譜曲創作暨歌唱表演競賽」\r\n參賽獎金豐厚!!', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -201,8 +208,8 @@ CREATE TABLE `title` (
 
 INSERT INTO `title` (`id`, `text`, `img`, `sh`) VALUES
 (2, '校園科技大學資訊管理系統', '01B01.jpg', 0),
-(9, '校園科技大學資訊管理系統', '01B03.jpg', 1),
-(10, '校園科技大學資訊管理系統', '01B02.jpg', 0),
+(9, '校園科技大學資訊管理系統', '01B03.jpg', 0),
+(10, '校園科技大學資訊管理系統', '01B02.jpg', 1),
 (12, '校園科技大學資訊管理系統', '01B04.jpg', 0);
 
 -- --------------------------------------------------------
@@ -221,7 +228,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 1233);
+(1, 1260);
 
 --
 -- 已傾印資料表的索引
@@ -295,7 +302,7 @@ ALTER TABLE `ad`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `bottom`
@@ -307,13 +314,13 @@ ALTER TABLE `bottom`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
@@ -325,7 +332,7 @@ ALTER TABLE `mvim`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `title`
